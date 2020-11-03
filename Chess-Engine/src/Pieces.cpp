@@ -9,10 +9,10 @@
 #include "Queen.h"
 using namespace std;
 
-Pieces::Pieces()
-{
+// Pieces::Pieces()
+// {
 
-}
-bool::Pieces isMoveValid(int x, int y, int x_final, int y_final){
+// }
+// bool::Pieces isMoveValid(int x, int y, int x_final, int y_final){
 
-}
+// }

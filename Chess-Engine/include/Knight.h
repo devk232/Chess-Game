@@ -6,7 +6,6 @@ class Knight: public Pieces
 {
     public:
         Knight();
-        getMoves(int x, int y);
 
     protected:
 

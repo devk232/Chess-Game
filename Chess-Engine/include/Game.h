@@ -6,9 +6,9 @@ class Game
 {
     public:
         Game();
-        void initialize(); // function to start the game
+        void say();
     private:
-        int time;
+      
 };
 
 #endif // GAME_H

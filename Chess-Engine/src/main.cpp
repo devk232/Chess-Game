@@ -11,6 +11,6 @@ using namespace std;
 
 int main(){
     Game game;
-    game.initialize();
+    game.say();
     return 0;
 }

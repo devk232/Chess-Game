@@ -1,15 +1,15 @@
-#ifndef SQUARE _H
-#define SQUARE _H
+#ifndef SQUARE_H
+#define SQUARE_H
 
 
 class Square
 {
     public:
-        Square(int, int , Pieces piece);
+        Square();
     protected:
 
     private:
-        Pieces piece;
+        int piece;
         int x;
         int y;
 };

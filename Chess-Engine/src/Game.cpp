@@ -8,7 +8,7 @@
 #include "Knight.h"
 #include "Rook.h"
 #include "Queen.h"
-using namespace sf;
+#include <iostream>
 using namespace std;
 
 Game::Game()
@@ -16,6 +16,6 @@ Game::Game()
     //ctor
 }
 
-void Game::initialize(){
-    sf::RenderWindow window(sf::VideoMode(512,512), "Chess");
+void Game::say(){
+    std::cout << "hello";
 }
