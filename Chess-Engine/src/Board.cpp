@@ -4,8 +4,3 @@ Board::Board()
 {
     //ctor
 }
-
-Board::~Board()
-{
-    //dtor
-}

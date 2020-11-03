@@ -6,10 +6,9 @@ class Game
 {
     public:
         Game();
-
-    protected:
-
+        void initialize(); // function to start the game
     private:
+        int time;
 };
 
 #endif // GAME_H

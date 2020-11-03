@@ -2,7 +2,7 @@
 #define PAWN_H
 
 
-class Pawn
+class Pawn: public Pieces
 {
     public:
         Pawn();

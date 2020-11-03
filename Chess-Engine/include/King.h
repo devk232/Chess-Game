@@ -2,10 +2,13 @@
 #define KING_H
 
 
-class King
+class King: public Pieces
 {
     public:
         King();
+        void isStaleMate();
+        void isCheck();
+        void isCheckmate();
     protected:
 
     private:

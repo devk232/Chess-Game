@@ -2,7 +2,7 @@
 #define QUEEN_H
 
 
-class Queen
+class Queen: public Pieces
 {
     public:
         Queen();

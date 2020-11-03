@@ -2,7 +2,7 @@
 #define ROOK_H
 
 
-class Rook
+class Rook: public Pieces
 {
     public:
         Rook();

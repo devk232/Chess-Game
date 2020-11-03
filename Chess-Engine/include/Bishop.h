@@ -2,7 +2,7 @@
 #define BISHOP_H
 
 
-class Bishop
+class Bishop: public Pieces
 {
     public:
         Bishop();

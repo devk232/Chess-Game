@@ -6,11 +6,10 @@ class Board
 {
     public:
         Board();
-        virtual ~Board();
-
     protected:
 
     private:
+        int board[8][8];
 };
 
 #endif // BOARD_H
