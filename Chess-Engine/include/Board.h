@@ -1,15 +1,16 @@
+
 #ifndef BOARD_H
 #define BOARD_H
-
 
 class Board
 {
     public:
         Board();
-    protected:
-
+        void showBoard();
+        void initialiseBoard();
     private:
-        int board[8][8];
+        int cells[8][8];  // 0 if unoccupied and 1 if occupied
+        
 };
 
-#endif // BOARD_H
+#endif 

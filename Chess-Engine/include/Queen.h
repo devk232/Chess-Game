@@ -6,6 +6,7 @@ class Queen: public Pieces
 {
     public:
         Queen();
+        bool CheckMove(int,int ,int ,int);
     protected:
 
     private:

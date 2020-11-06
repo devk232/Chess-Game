@@ -11,11 +11,7 @@
 #include <iostream>
 using namespace std;
 
-Game::Game()
-{
-    //ctor
-}
-
-void Game::say(){
-    std::cout << "hello";
+Game::Game(){
+   gameStatus = true;
+   
 }
