@@ -5,7 +5,3 @@
 #include "King.h"
 using namespace std;
 
-King::King()
-{
-    //ctor
-}

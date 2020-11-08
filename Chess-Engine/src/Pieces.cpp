@@ -1,14 +1,12 @@
 #include <iostream>
-#include "Game.h"
-#include "Board.h"
-#include "Pieces.h"
-#include "Pawn.h"
-#include "King.h"
-#include "Knight.h"
-#include "Rook.h"
-#include "Queen.h"
+#include <vector>
+#include <Pieces.h>
+#include <Square.h>
 using namespace std;
 
 Pieces::Pieces(bool color){
     isWhite = color;
+}
+vector<Square> Pieces::getMoves(){
+    
 }

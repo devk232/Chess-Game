@@ -11,10 +11,9 @@ class Game
     private:
         Player player1;
         Player player2;
-        Board board;
+        Square cells[8][8];
         bool gameStatus;
         bool whiteTurn;
-
 };
 
 #endif // GAME_H

@@ -15,8 +15,7 @@ class Player
         void getMove();               
     private:
         string move;            
-        int Color_of_Player;       // 0 if player is black, 1 otherwise.
-
+        int Color_of_Player;       // 0 if player is black, 1 otherwise.      
         // each player has the following pieces.
         King king;                          
         Queen queen;
@@ -26,4 +25,4 @@ class Player
         Pawn paws[8];
 };
 
-#endif // PLAYER_H
+#endif 

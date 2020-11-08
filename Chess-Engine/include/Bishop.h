@@ -5,8 +5,7 @@
 class Bishop: public Pieces
 {
     public:
-        Bishop();
-
+        vector<Square> getMoves(Square cells[][8], int x, int y);
     protected:
 
     private:

@@ -5,38 +5,104 @@
 #include "Queen.h"
 using namespace std;
 
-Queen::Queen(){
-    
-}
-
-bool Queen::CheckMove(int x, int y, int x1, int y1){
-    if(x != x1 || y != y1 || (x - x1) != (y - y1))
-        return false;
-    if(x == x1){
-        for(int i = y + 1; i < y1; i += (x1 > x? 1: -1)){
-            // check if there is a piece in between 
-           if(1){
-            return false;
-           }
+vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
+    possibleMoves.clear();
+    int a = x + 1, b = y + 1;
+    while(a <= 7 && b <= 7){
+        if(cells[a][b].occupied_value == 0)
+            possibleMoves.push_back(cells[x][y]);
+        else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
+            break;
+        else{
+            possibleMoves.push_back(cells[a][b]);
+            break;
         }
-        return true;
+        a++; b++;
     }
-    if(y == y1){
-        for(int i = x + 1; i < x1; i += (x1 > x? 1: -1)){
-            // cheeck for piece
-            if(1){
-            return false;
-            }
+    a = x + 1, b = y - 1;
+    while(a <= 7 && b >= 0){
+        if(cells[a][b].occupied_value == 0)
+            possibleMoves.push_back(cells[x][y]);
+        else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
+            break;
+        else{
+            possibleMoves.push_back(cells[a][b]);
+            break;
         }
-        return true;
+        a++; b--;
     }
-    else{
-        for(int a = 0, b = 0; a < abs(x - x1); a += (x1 > x? 1: -1), b += (x1 > x? 1: -1)){
-            // check for a piece at a,b
-            if(1){
-            return false;
-            }
-            return true;
-        } 
+    a = x - 1, b = y - 1;
+    while(a >= 0 && b >= 0){
+        if(cells[a][b].occupied_value == 0)
+            possibleMoves.push_back(cells[x][y]);
+        else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
+            break;
+        else{
+            possibleMoves.push_back(cells[a][b]);
+            break;
+        }
+        a--; b--;
     }
+    a = x - 1, b = y + 1;
+    while(a >= 0 && b <= 7){
+        if(cells[a][b].occupied_value == 0)
+            possibleMoves.push_back(cells[x][y]);
+        else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
+            break;
+        else{
+            possibleMoves.push_back(cells[a][b]);
+            break;
+        }
+        a--; b++;
+    }
+        int r = x - 1;
+    while(r >= 0){
+        if(cells[r][y].occupied_value == 0)
+            possibleMoves.push_back(cells[r][y]);
+        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+            break;
+        else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
+            possibleMoves.push_back(cells[r][y]);
+            break;
+        }
+        r--;
+    }
+    r = x + 1;
+    while(r <= 7){
+        if(cells[r][y].occupied_value == 0)
+            possibleMoves.push_back(cells[r][y]);
+        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+            break;
+        else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
+            possibleMoves.push_back(cells[r][y]);
+            break;
+        }
+        r++;
+    }
+    r = y - 1;
+    while(r >= 0){
+        if(cells[x][r].occupied_value == 0)
+            possibleMoves.push_back(cells[x][r]);
+        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+            break;
+        else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
+            possibleMoves.push_back(cells[x][r]);
+            break;
+        }
+        r--;
+    }
+    r = y + 1;
+    while(r <= 7){
+        if(cells[x][r].occupied_value == 0)while(r >= 0){
+        if(cells[x][r].occupied_value == 0)
+            possibleMoves.push_back(cells[x][r]);
+        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+            break;
+        else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
+            possibleMoves.push_back(cells[x][r]);
+              break;
+        }
+        r++;
+    }
+    return possibleMoves;
 }

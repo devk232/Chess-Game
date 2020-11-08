@@ -13,5 +13,4 @@ using namespace std;
 
 Game::Game(){
    gameStatus = true;
-   
 }

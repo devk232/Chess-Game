@@ -2,15 +2,15 @@
 #define KING_H
 
 
-class King: public Pieces
-{
+class King: public Pieces{
     public:
         King();
-        void isStaleMate();
-        void isCheck();
-        void isCheckmate();
+        bool isStaleMate(Square Cells[][8], int x, int y);
+        bool isCheck(Square Cells[][8], int x, int y);
+        bool isCheckmate(Square Cells[][8], int x, int y);
+        vector<Square> getMoves(Square cells[][8], int x, int y);
     protected:
-
+        
     private:
 };
 

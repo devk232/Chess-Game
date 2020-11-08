@@ -6,7 +6,7 @@ class Queen: public Pieces
 {
     public:
         Queen();
-        bool CheckMove(int,int ,int ,int);
+        vector<Square> getMoves(Square cells[][8], int x, int y);
     protected:
 
     private:

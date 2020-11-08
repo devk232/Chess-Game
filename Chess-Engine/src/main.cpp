@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Game.h"
-#include "Board.h"
 #include "Pieces.h"
 #include "Pawn.h"
 #include "King.h"
@@ -11,6 +10,6 @@ using namespace std;
 
 int main(){
     Game game;
-    game.say();
+    
     return 0;
 }
