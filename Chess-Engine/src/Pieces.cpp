@@ -7,6 +7,3 @@ using namespace std;
 Pieces::Pieces(bool color){
     isWhite = color;
 }
-vector<Square> Pieces::getMoves(){
-    
-}

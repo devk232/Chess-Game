@@ -4,7 +4,6 @@
 
 class Rook: public Pieces{
     public:
-        Rook();
         vector<Square> getMoves(Square cells[][8], int x, int y);
     protected:
 

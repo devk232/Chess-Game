@@ -11,11 +11,12 @@ using namespace std;
 class Player
 {
     public:
+        Player();
         Player(int color);
-        void getMove();               
+        void getMove();   
+        int playerColor;             // 0 if player is black, 1 otherwise.   
     private:
-        string move;            
-        int Color_of_Player;       // 0 if player is black, 1 otherwise.      
+        string move;                
         // each player has the following pieces.
         King king;                          
         Queen queen;

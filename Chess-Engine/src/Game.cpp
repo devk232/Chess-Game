@@ -1,7 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
-#include "Board.h"
 #include "Pieces.h"
 #include "Pawn.h"
 #include "King.h"
@@ -12,5 +11,6 @@
 using namespace std;
 
 Game::Game(){
-   gameStatus = true;
+   player1.playerColor = 1;
+   player2.playerColor = 0;
 }

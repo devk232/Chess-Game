@@ -1,10 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
-#include <Board.h>
 #include <Pieces.h>
 #include <Player.h>
 
-class Game
+class Game:public Player
 {
     public:
         Game();

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Game.h"
-#include "Board.h"
 #include "Pieces.h"
 #include "Queen.h"
 using namespace std;
@@ -93,7 +92,6 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     }
     r = y + 1;
     while(r <= 7){
-        if(cells[x][r].occupied_value == 0)while(r >= 0){
         if(cells[x][r].occupied_value == 0)
             possibleMoves.push_back(cells[x][r]);
         else if(cells[x][r].occupied_color = cells[x][y].occupied_color)

@@ -1,5 +1,6 @@
 #ifndef KING_H
 #define KING_H
+#include "Square.h"
 
 
 class King: public Pieces{
