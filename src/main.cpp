@@ -7,18 +7,20 @@
 using namespace sf;
 
 int main(){
-    Game game;
-    RenderWindow window(VideoMode(1000, 800), "The Chess", Style::Titlebar | Style::Close);
-    window.setVerticalSyncEnabled(true);
+    RenderWindow window(VideoMode(1100, 800), "The Chess", Style::Titlebar | Style::Close);
+    Game chess(Color(0xf3bc7aff),Color(0xae722bff));
     while(window.isOpen()){
         Event e;
         while(window.pollEvent(e)){
             if(e.type == Event::Closed)
                 window.close();
             if(e.type == Event::MouseButtonPressed){
-                if(e.mouseButton.button == Mouse::Left){
-                    
-                }
+
+            }
+        }
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                window.draw(chess.cells[i][j].square);
             }
         }
         window.display();
