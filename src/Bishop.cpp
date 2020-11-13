@@ -4,6 +4,10 @@
 #include "Bishop.h"
 using namespace std;
 
+Bishop::Bishop(int color){
+    isWhite = color;
+    isAlive  = true;
+}
 vector<Square> Bishop::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();
     int a = x + 1, b = y + 1;

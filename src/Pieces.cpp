@@ -4,6 +4,3 @@
 #include <Square.h>
 using namespace std;
 
-Pieces::Pieces(bool color){
-    isWhite = color;
-}

@@ -1,12 +1,24 @@
 #include <iostream>
-#include "Game.h"
 #include "Square.h"
 #include "Pieces.h"
 #include "King.h"
 using namespace std;
 
-King::King(){
-
+King::King(int color){
+    isWhite = color;
+    isAlive = true;
+}
+vector<Square> King::getMoves(Square Cells[][8], int x, int y){
+    possibleMoves.clear();
+    int dx[] = {1, 1,1,-1,-1,-1,0,0};    // all possible moves.
+    int dy[] = {1,-1,0,-1,1,0, -1,1};    // all possible moves.
+    for(int i = 0; i < 8; i++){
+        if(x + dx[i] > 7 || x + dx[i] < 0)
+            continue;
+        if(y + dy[i] > 7 || y + dy[i] < 0)
+            continue;
+        possibleMoves.push_back(Cells[x + dx[i]][y + dy[i]]);
+    }
 }
 
 bool King::isCheck(Square Cells[][8], int x, int y){
@@ -132,10 +144,10 @@ bool King::isCheck(Square Cells[][8], int x, int y){
             return true;
     }
     // loop to check if the king is being attacked by knight of opposite colour
-    int dx[] = {2, 2,-2,-2,1, 1,-1, -1};    // all possible moves.
-    int dy[] = {1,-1, 1,-1, 2,-2, 2,-2};    // all possible moves.
+    int xa[] = {2, 2,-2,-2,1, 1,-1, -1};    // all possible moves.
+    int ya[] = {1,-1, 1,-1, 2,-2, 2,-2};    // all possible moves.
     for(int i = 0; i < 8; i++){
-        if(Cells[x + dx[i]][y + dy[i]].occupied_color != Cells[x][y].occupied_color && Cells[x + dx[i]][y + dy[i]].occupied_value == -1)
+        if(Cells[x + xa[i]][y + ya[i]].occupied_color != Cells[x][y].occupied_color && Cells[x + xa[i]][y + ya[i]].occupied_value == -1)
             return true;
     }
     // loops to check if the king is being attacked by the pawn of another colour
@@ -160,21 +172,10 @@ bool King::isCheckmate(Square Cells[][8], int x, int y){
     return false;
 }
 
-
 bool King::isStaleMate(Square Cells[][8], int x, int y){
     if(!possibleMoves.size() && !isCheck(Cells, x, y))
         return true;
     return false;
 }
-vector<Square> King::getMoves(Square Cells[][8], int x, int y){
-    possibleMoves.clear();
-    int dx[] = {1, 1,1,-1,-1,-1,0,0};    // all possible moves.
-    int dy[] = {1,-1,0,-1,1,0, -1,1};    // all possible moves.
-    for(int i = 0; i < 8; i++){
-        if(x + dx[i] > 7 || x + dx[i] < 0)
-            continue;
-        if(y + dy[i] > 7 || y + dy[i] < 0)
-            continue;
-        possibleMoves.push_back(Cells[x + dx[i]][y + dy[i]]);
-    }
-}
+
+

@@ -1,6 +1,5 @@
 #ifndef SQUARE_H
 #define SQUARE_H
-#include <Pieces.h>
 
 class Square{
     public:

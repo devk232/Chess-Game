@@ -4,6 +4,11 @@
 #include "Queen.h"
 using namespace std;
 
+Queen::Queen(int color){
+    isWhite = color;
+    isAlive = true;
+}
+
 vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();
     int a = x + 1, b = y + 1;

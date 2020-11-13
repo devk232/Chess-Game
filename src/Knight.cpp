@@ -1,12 +1,14 @@
 #include <iostream>
-#include "Game.h"
+#include "Square.h"
 #include "Pieces.h"
 #include "Knight.h"
 using namespace std;
 
-Knight::Knight(){
-
+Knight::Knight(int color){
+    isWhite = color;
+    isAlive = true;
 }
+
 vector<Square> Knight::getMoves(Square Cells[][8], int x, int y){
     possibleMoves.clear();
     int dx[] = {2, 2,-2,-2,1, 1,-1, -1};    // all possible moves.

@@ -3,10 +3,11 @@
 #include <Pieces.h>
 #include <Player.h>
 
-class Game:public Player
+class Game
 {
     public:
         Game();
+        void Start();
     private:
         Player player1;
         Player player2;

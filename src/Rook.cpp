@@ -4,6 +4,11 @@
 #include "Rook.h"
 using namespace std;
 
+Rook::Rook(int color){
+    isWhite = color;
+    isAlive = true;
+}
+
 vector<Square> Rook::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();
     int r = x - 1;

@@ -4,6 +4,10 @@
 #include "Pawn.h"
 using namespace std;
 
+Pawn::Pawn(int color){
+    isWhite = color;
+    isAlive = true;
+}
 vector<Square> Pawn::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();
     if(cells[x][y].occupied_color == 1){
