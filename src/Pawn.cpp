@@ -7,6 +7,10 @@ using namespace std;
 Pawn::Pawn(int color){
     isWhite = color;
     isAlive = true;
+    blackPawn.loadFromFile("Textures/b_pawn.png");
+    whitePawn.loadFromFile("Textures/w_pawn.png");
+    y = (color == 0) ? 6: 1;
+    piece.setTexture((color == 0) ? blackPawn : whitePawn);
 }
 vector<Square> Pawn::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();

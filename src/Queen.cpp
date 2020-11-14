@@ -7,6 +7,12 @@ using namespace std;
 Queen::Queen(int color){
     isWhite = color;
     isAlive = true;
+    blackQueen.loadFromFile("Textures/b_queen.png");
+    whiteQueen.loadFromFile("Textures/w_queen.png");
+    piece.setTexture((color == 0) ? blackQueen : whiteQueen);
+    y = (color == 0) ? 7 : 0;
+    x = 4;
+    piece.setPosition(x*100.0f, y*100.f);
 }
 
 vector<Square> Queen::getMoves(Square cells[][8], int x, int y){

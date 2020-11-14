@@ -1,12 +1,17 @@
 #include <iostream>
 #include "Game.h"
 #include "Pieces.h"
+#include <vector>
 #include "Rook.h"
 using namespace std;
 
 Rook::Rook(int color){
     isWhite = color;
     isAlive = true;
+    blackRook.loadFromFile("Textures/b_rook.png");
+    whiteRook.loadFromFile("Textures/w_rook.png");
+    y = (color == 0) ? 7: 0;
+    piece.setTexture((color == 0) ? whiteRook : blackRook);
 }
 
 vector<Square> Rook::getMoves(Square cells[][8], int x, int y){

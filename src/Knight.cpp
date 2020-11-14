@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Square.h"
 #include "Pieces.h"
 #include "Knight.h"
@@ -7,7 +8,12 @@ using namespace std;
 Knight::Knight(int color){
     isWhite = color;
     isAlive = true;
+    blackKnight.loadFromFile("Textures/b_knight.png");
+    whiteKnight.loadFromFile("Textures/w_knight.png");
+    y = (color == 0) ? 7: 0;
+    piece.setTexture((color == 0) ? blackKnight : whiteKnight);
 }
+
 
 vector<Square> Knight::getMoves(Square Cells[][8], int x, int y){
     possibleMoves.clear();

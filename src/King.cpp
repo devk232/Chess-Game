@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Square.h"
 #include "Pieces.h"
 #include "King.h"
@@ -7,6 +8,12 @@ using namespace std;
 King::King(int color){
     isWhite = color;
     isAlive = true;
+    blackKing.loadFromFile("Textures/b_king.png");
+    whiteKing.loadFromFile("Textures/w_king.png");
+    piece.setTexture((color == 0) ? blackKing : whiteKing);
+    y = (color == 0) ? 7 : 0;
+    x = 3;
+    piece.setPosition(x*100.0f, y*100.f);
 }
 vector<Square> King::getMoves(Square Cells[][8], int x, int y){
     possibleMoves.clear();

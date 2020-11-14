@@ -2,8 +2,9 @@
 #define PIECES_H
 #include <iostream>
 #include<vector>
+#include <SFML/Graphics.hpp>
 #include <Square.h>
-using namespace std;
+using namespace sf;
 
 class Pieces{
     public:
@@ -12,6 +13,7 @@ class Pieces{
         int x, y;      
         bool isAlive;
         bool isWhite;
+        Sprite piece;
 };
 
 #endif // PIECES_H

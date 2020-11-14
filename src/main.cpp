@@ -9,6 +9,8 @@ using namespace sf;
 int main(){
     RenderWindow window(VideoMode(1100, 800), "The Chess", Style::Titlebar | Style::Close);
     Game chess(Color(0xf3bc7aff),Color(0xae722bff));
+    Bishop p(1);
+    Player p2(0);
     while(window.isOpen()){
         Event e;
         while(window.pollEvent(e)){
@@ -23,6 +25,7 @@ int main(){
                 window.draw(chess.cells[i][j].square);
             }
         }
+        window.draw(p.piece);
         window.display();
     }
     return 0;

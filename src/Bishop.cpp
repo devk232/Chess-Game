@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Game.h"
+#include <vector>
 #include "Pieces.h"
 #include "Bishop.h"
 using namespace std;
@@ -7,6 +8,10 @@ using namespace std;
 Bishop::Bishop(int color){
     isWhite = color;
     isAlive  = true;
+    blackBishop.loadFromFile("Textures/b_bishop.png");
+    whiteBishop.loadFromFile("Textures/w_bishop.png");
+    y = (color == 0) ? 7: 0;
+    piece.setTexture((color == 0) ? blackBishop : whiteBishop);
 }
 vector<Square> Bishop::getMoves(Square cells[][8], int x, int y){
     possibleMoves.clear();
