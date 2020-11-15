@@ -1,9 +1,8 @@
-#ifndef PIECES_H
-#define PIECES_H
 #include <iostream>
-#include<vector>
 #include <SFML/Graphics.hpp>
 #include <Square.h>
+#ifndef PIECES_H
+#define PIECES_H
 using namespace sf;
 
 class Pieces{
