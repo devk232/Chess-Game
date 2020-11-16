@@ -10,8 +10,8 @@ Rook::Rook(int color){
     isAlive = true;
     blackRook.loadFromFile("Textures/b_rook.png");
     whiteRook.loadFromFile("Textures/w_rook.png");
-    y = (color == 0) ? 7: 0;
-    piece.setTexture((color == 0) ? whiteRook : blackRook);
+    y = (color == 0) ? 0 : 7;
+    piece.setTexture((color == 0) ? blackRook : whiteRook);
 }
 
 vector<Square> Rook::getMoves(Square cells[][8], int x, int y){

@@ -10,9 +10,11 @@ Queen::Queen(int color){
     blackQueen.loadFromFile("Textures/b_queen.png");
     whiteQueen.loadFromFile("Textures/w_queen.png");
     piece.setTexture((color == 0) ? blackQueen : whiteQueen);
-    y = (color == 0) ? 7 : 0;
+    y = (color == 0) ? 0 : 7;
     x = 4;
-    piece.setPosition(x*100.0f, y*100.f);
+    piece.setPosition(x*100.0f + 50.f, y*100.f + 50.f);
+    piece.setOrigin(sf::Vector2f(piece.getTexture()->getSize().x/2 , piece.getTexture()->getSize().y/2));
+    piece.setScale(sf::Vector2f(0.375f,0.375f));
 }
 
 vector<Square> Queen::getMoves(Square cells[][8], int x, int y){

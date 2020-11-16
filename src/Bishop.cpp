@@ -10,7 +10,7 @@ Bishop::Bishop(int color){
     isAlive  = true;
     blackBishop.loadFromFile("Textures/b_bishop.png");
     whiteBishop.loadFromFile("Textures/w_bishop.png");
-    y = (color == 0) ? 7: 0;
+    y = (color == 0) ? 0: 7;
     piece.setTexture((color == 0) ? blackBishop : whiteBishop);
 }
 vector<Square> Bishop::getMoves(Square cells[][8], int x, int y){

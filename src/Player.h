@@ -2,6 +2,7 @@
 #define PLAYER_H
 #include <string>
 #include <King.h>
+#include <Game.h>
 #include "Pieces.h"
 #include "Queen.h"
 #include "Pawn.h"
@@ -9,8 +10,8 @@
 #include "Rook.h"
 #include "Bishop.h"
 using namespace std;
-class Player
-{
+
+class Player{
     public:
         Player(int color);
         void getMove();   
@@ -18,12 +19,7 @@ class Player
     private:
         string move;                
         // each player has the following pieces.
-        King* king;                          
-        Queen* queen;
-        Bishop* bishop[2];
-        Rook* rook[2];
-        Knight* knight[2];
-        Pawn* pawn[8];
+
 };
 
 #endif 

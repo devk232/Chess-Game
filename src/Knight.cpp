@@ -10,7 +10,7 @@ Knight::Knight(int color){
     isAlive = true;
     blackKnight.loadFromFile("Textures/b_knight.png");
     whiteKnight.loadFromFile("Textures/w_knight.png");
-    y = (color == 0) ? 7: 0;
+    y = (color == 0) ? 0: 7;
     piece.setTexture((color == 0) ? blackKnight : whiteKnight);
 }
 
