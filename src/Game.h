@@ -18,11 +18,12 @@ class Game: public sf::Drawable{
         bool SelectPiece(Square Cells[][8], int x, int y);
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void moveSelected(Square Cells[][8], int x, int y);
-        bool getSelected(){return selected;}
+        bool getSelected();
         void SetRightSideofWindow();
         Square cells[8][8];
     private:
         vector<Square> moves;
+        vector<sf::RectangleShape> newmoves;
         // white pieces
         King* w_king;                          
         Queen* w_queen;

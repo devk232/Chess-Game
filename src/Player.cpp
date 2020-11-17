@@ -15,5 +15,5 @@ using namespace sf;
 
 
 Player::Player(int color) : playerColor(color){
-    
+    occupied_color = color;
 }

@@ -10,7 +10,8 @@ Rook::Rook(int color){
     isAlive = true;
     blackRook.loadFromFile("Textures/b_rook.png");
     whiteRook.loadFromFile("Textures/w_rook.png");
-    y = (color == 0) ? 0 : 7;
+    occupied_value = 1;
+    x = (color == 0) ? 0 : 7;
     piece.setTexture((color == 0) ? blackRook : whiteRook);
 }
 

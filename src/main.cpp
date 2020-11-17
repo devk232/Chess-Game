@@ -15,20 +15,15 @@ int main(){
             if(e.type == Event::MouseButtonPressed){
                 if(e.mouseButton.button == sf::Mouse::Left){
                     if(e.mouseButton.x >= 0 && e.mouseButton.x <= 800 && e.mouseButton.y >= 0 && e.mouseButton.y <= 800){ 
-                        cout << e.mouseButton.x << " " << e.mouseButton.y  << endl;  
                         int x = e.mouseButton.y/100, y = e.mouseButton.x/100;
-                        cout << x << " " << y << endl;          
-                        if(!chess.getSelected())
+                        if(!chess.getSelected()){
                             chess.SelectPiece(chess.cells,x, y);
-                        // else
-                        //    chess.moveSelected(chess.cells,x,y);
+                        }
+                        else{
+                           chess.moveSelected(chess.cells,e.mouseButton.y/100,e.mouseButton.x/100);
+                        }
                     }
                 }
-            }
-        }
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-                window.draw(chess.cells[i][j].square);
             }
         }
         window.draw(chess);

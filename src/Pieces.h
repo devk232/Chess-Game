@@ -12,6 +12,8 @@ class Pieces{
         int x, y;      
         bool isAlive;
         bool isWhite;
+        bool occupied_color;
+        int occupied_value;
         sf::Sprite piece;
 };
 

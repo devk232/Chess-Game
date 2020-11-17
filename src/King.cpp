@@ -11,9 +11,10 @@ King::King(int color){
     blackKing.loadFromFile("Textures/b_king.png");
     whiteKing.loadFromFile("Textures/w_king.png");
     piece.setTexture((color == 0) ? blackKing : whiteKing);
-    y = (color == 0) ? 0 : 7;
-    x = 3;
-    piece.setPosition(x*100.0f + 50.f, y*100.f + 50.f);
+    x = (color == 0) ? 0 : 7;
+    y = 3;
+    occupied_value = 3;
+    piece.setPosition(y*100.0f + 50.f, x*100.f + 50.f);
     piece.setOrigin(sf::Vector2f(piece.getTexture()->getSize().x/2 , piece.getTexture()->getSize().y/2));
     piece.setScale(sf::Vector2f(0.375f,0.375f));
 }
