@@ -330,6 +330,7 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
         }
         whiteTurn = !whiteTurn;
     }
+    cout << w_bishop[1]->x << " " << w_bishop[1]->y << endl;
     selected_piece = NULL;
     selected = false;
 } 
