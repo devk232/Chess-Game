@@ -11,7 +11,7 @@ Queen::Queen(int color){
     whiteQueen.loadFromFile("Textures/w_queen.png");
     piece.setTexture((color == 0) ? blackQueen : whiteQueen);
     x = (color == 0) ? 0 : 7;
-    y = 4;
+    y = 3;
     occupied_value = 2;
     piece.setPosition(y*100.0f + 50.f, x*100.f + 50.f);
     piece.setOrigin(sf::Vector2f(piece.getTexture()->getSize().x/2 , piece.getTexture()->getSize().y/2));
@@ -23,7 +23,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     int a = x + 1, b = y + 1;
     while(a <= 7 && b <= 7){
         if(cells[a][b].occupied_value == 0)
-            possibleMoves.push_back(cells[x][y]);
+            possibleMoves.push_back(cells[a][b]);
         else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
             break;
         else{
@@ -35,7 +35,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     a = x + 1, b = y - 1;
     while(a <= 7 && b >= 0){
         if(cells[a][b].occupied_value == 0)
-            possibleMoves.push_back(cells[x][y]);
+            possibleMoves.push_back(cells[a][b]);
         else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
             break;
         else{
@@ -47,7 +47,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     a = x - 1, b = y - 1;
     while(a >= 0 && b >= 0){
         if(cells[a][b].occupied_value == 0)
-            possibleMoves.push_back(cells[x][y]);
+            possibleMoves.push_back(cells[a][b]);
         else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
             break;
         else{
@@ -59,7 +59,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     a = x - 1, b = y + 1;
     while(a >= 0 && b <= 7){
         if(cells[a][b].occupied_value == 0)
-            possibleMoves.push_back(cells[x][y]);
+            possibleMoves.push_back(cells[a][b]);
         else if(cells[a][b].occupied_color == cells[x][y].occupied_color)
             break;
         else{
@@ -72,7 +72,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     while(r >= 0){
         if(cells[r][y].occupied_value == 0)
             possibleMoves.push_back(cells[r][y]);
-        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+        else if(cells[r][y].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[r][y]);
@@ -84,7 +84,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     while(r <= 7){
         if(cells[r][y].occupied_value == 0)
             possibleMoves.push_back(cells[r][y]);
-        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+        else if(cells[r][y].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[r][y]);
@@ -96,7 +96,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     while(r >= 0){
         if(cells[x][r].occupied_value == 0)
             possibleMoves.push_back(cells[x][r]);
-        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+        else if(cells[x][r].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[x][r]);
@@ -108,7 +108,7 @@ vector<Square> Queen::getMoves(Square cells[][8], int x, int y){
     while(r <= 7){
         if(cells[x][r].occupied_value == 0)
             possibleMoves.push_back(cells[x][r]);
-        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+        else if(cells[x][r].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[x][r]);

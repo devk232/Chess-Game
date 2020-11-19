@@ -19,6 +19,7 @@ class Game: public sf::Drawable{
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void moveSelected(Square Cells[][8], int x, int y);
         bool getSelected();
+        void gameOver();
         void SetRightSideofWindow();
         Square cells[8][8];
     private:

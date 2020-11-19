@@ -162,14 +162,30 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const{
         if(whitePieces[i]->isAlive){
             target.draw(whitePieces[i]->piece);
         }
+        // if(!whitePieces[i]->isAlive){
+        //      if(!w_king->isAlive){
+        //         sleep(3);
+        //         exit(0);
+        //      }
+        // }
     }
     for(int i = 0; i < blackPieces.size(); i++){
         if(blackPieces[i]->isAlive){
             target.draw(blackPieces[i]->piece);
         }
+        // if(!blackPieces[i]->isAlive){
+        //      if(!b_king->isAlive){
+        //         sleep(3);
+        //         exit(0);
+        //      }
+        // }
     }
 }
 
+void Game::gameOver(){
+    sleep(3);
+    exit(0);
+}
 void Game::DrawPossibleMoves(){
     if(selected_piece == NULL)
         return;
@@ -265,14 +281,6 @@ bool Game::SelectPiece(Square Cells[][8], int x, int y){
     }
     DrawPossibleMoves();
     return true;
-    if(w_king->isAlive == false){
-        sleep(3);
-        exit(0);
-    }
-    if(b_king->isAlive == false){
-        sleep(3);
-        exit(0);
-    }
 }
 bool Game::getSelected(){
     return selected;
@@ -297,9 +305,6 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
                 for(int i = 0; i < whitePieces.size(); i++){
                     if(whitePieces[i]->x == x && whitePieces[i]->y == y){
                         whitePieces[i]->isAlive = false;
-                        whitePieces[i]->x  = 100;
-                        whitePieces[i]->y =  100;
-                        whitePieces[i]->piece.setPosition(100*x,100*y);
                     }
                 }
             }
@@ -307,9 +312,6 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
                 for(int i = 0; i < blackPieces.size(); i++){
                     if(blackPieces[i]->x == x && blackPieces[i]->y == y){
                         blackPieces[i]->isAlive = false;
-                        blackPieces[i]->x  = 100;
-                        blackPieces[i]->y =  100;
-                        blackPieces[i]->piece.setPosition(100*x, 100*y);
                     }
                 }
             }
@@ -372,12 +374,9 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
         }
         whiteTurn = !whiteTurn;
     }
-    // for(int i = 0; i < 8; i++){
-    //     for(int j = 0; j < 8; j++){
-    //         cout << abs(Cells[i][j].occupied_value) << " ";
-    //     }
-    //     cout << endl;
-    // }
+     if(!w_king->isAlive || !b_king->isAlive){
+         gameOver();
+     }
     selected_piece = NULL;
     selected = false;
 } 

@@ -21,7 +21,7 @@ vector<Square> Rook::getMoves(Square cells[][8], int x, int y){
     while(r >= 0){
         if(cells[r][y].occupied_value == 0)
             possibleMoves.push_back(cells[r][y]);
-        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+        else if(cells[r][y].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[r][y]);
@@ -33,7 +33,7 @@ vector<Square> Rook::getMoves(Square cells[][8], int x, int y){
     while(r <= 7){
         if(cells[r][y].occupied_value == 0)
             possibleMoves.push_back(cells[r][y]);
-        else if(cells[r][y].occupied_color = cells[x][y].occupied_color)
+        else if(cells[r][y].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[r][y].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[r][y]);
@@ -45,7 +45,7 @@ vector<Square> Rook::getMoves(Square cells[][8], int x, int y){
     while(r >= 0){
         if(cells[x][r].occupied_value == 0)
             possibleMoves.push_back(cells[x][r]);
-        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+        else if(cells[x][r].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[x][r]);
@@ -57,7 +57,7 @@ vector<Square> Rook::getMoves(Square cells[][8], int x, int y){
     while(r <= 7){
         if(cells[x][r].occupied_value == 0)
             possibleMoves.push_back(cells[x][r]);
-        else if(cells[x][r].occupied_color = cells[x][y].occupied_color)
+        else if(cells[x][r].occupied_color == cells[x][y].occupied_color)
             break;
         else if(cells[x][r].occupied_color != cells[x][y].occupied_color){
             possibleMoves.push_back(cells[x][r]);

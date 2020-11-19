@@ -12,7 +12,7 @@ King::King(int color){
     whiteKing.loadFromFile("Textures/w_king.png");
     piece.setTexture((color == 0) ? blackKing : whiteKing);
     x = (color == 0) ? 0 : 7;
-    y = 3;
+    y = 4;
     occupied_value = 3;
     piece.setPosition(y*100.0f + 50.f, x*100.f + 50.f);
     piece.setOrigin(sf::Vector2f(piece.getTexture()->getSize().x/2 , piece.getTexture()->getSize().y/2));
@@ -26,6 +26,8 @@ vector<Square> King::getMoves(Square Cells[][8], int x, int y){
         if(x + dx[i] > 7 || x + dx[i] < 0)
             continue;
         if(y + dy[i] > 7 || y + dy[i] < 0)
+            continue;
+        if(Cells[x + dx[i]][y + dy[i]].occupied_color == Cells[x][y].occupied_color)
             continue;
         possibleMoves.push_back(Cells[x + dx[i]][y + dy[i]]);
     }
