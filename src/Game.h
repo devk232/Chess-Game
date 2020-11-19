@@ -24,6 +24,8 @@ class Game: public sf::Drawable{
     private:
         vector<Square> moves;
         vector<sf::RectangleShape> newmoves;
+        vector<Pieces*> whitePieces;
+        vector<Pieces*> blackPieces;
         // white pieces
         King* w_king;                          
         Queen* w_queen;

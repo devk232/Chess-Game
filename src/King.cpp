@@ -29,6 +29,7 @@ vector<Square> King::getMoves(Square Cells[][8], int x, int y){
             continue;
         possibleMoves.push_back(Cells[x + dx[i]][y + dy[i]]);
     }
+    return possibleMoves;
 }
 
 bool King::isCheck(Square Cells[][8], int x, int y){

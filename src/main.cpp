@@ -5,6 +5,7 @@
 using namespace sf;
 
 int main(){
+    label:
     RenderWindow window(VideoMode(1100, 800), "The Chess", Style::Titlebar | Style::Close);
     Game chess(Color(0xf3bc7aff),Color(0xae722bff));
     while(window.isOpen()){
@@ -22,6 +23,9 @@ int main(){
                         else{
                            chess.moveSelected(chess.cells,e.mouseButton.y/100,e.mouseButton.x/100);
                         }
+                    }
+                    if(e.mouseButton.x >= 850 && e.mouseButton.x <= 1024 && e.mouseButton.y >= 5 && e.mouseButton.y <= 55){
+                        goto label;
                     }
                 }
             }

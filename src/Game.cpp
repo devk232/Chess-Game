@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "Pieces.h"
@@ -9,14 +10,13 @@ Game::Game(sf::Color c1, sf::Color c2){
     infoRestart.setFillColor(sf::Color::White);
     infoRestart.setOutlineThickness(-5.f);
     infoRestart.setOutlineColor(sf::Color::Black);
-    infoRestart.setPosition(sf::Vector2f(800.f,0.f));
-    infoRestart.setSize(sf::Vector2f(256.f, 50.f));
+    infoRestart.setPosition(sf::Vector2f(850.f,0.f));
+    infoRestart.setSize(sf::Vector2f(180.f, 60.f));
     textRestart.setFont(font);
-    textRestart.setString("RESTART");
+    textRestart.setString("Start Again");
     textRestart.setCharacterSize(24);
-    textRestart.setStyle(sf::Text::Bold);
     textRestart.setFillColor(sf::Color::Blue);
-    textRestart.setPosition(infoRestart.getPosition().x + 75.f, infoRestart.getPosition().y + 10.f);
+    textRestart.setPosition(infoRestart.getPosition().x + 30.f, infoRestart.getPosition().y + 10.f);
     turn.setFont(font);
     turn.setCharacterSize(24);
     turn.setStyle(sf::Text::Bold);
@@ -28,20 +28,32 @@ Game::Game(sf::Color c1, sf::Color c2){
     situation.setFillColor(sf::Color::White);
     situation.setPosition(850.f, 110.f);
     w_king = new King(1);
+    whitePieces.push_back(w_king);
     w_queen = new Queen(1);
+    whitePieces.push_back(w_queen);
     b_king = new King(0);
+    blackPieces.push_back(b_king);
     b_queen = new Queen(0);
+    blackPieces.push_back(b_queen);
     for(int i = 0; i < 8; i++){
         b_pawn[i] = new Pawn(0);
+        blackPieces.push_back(b_pawn[i]);
         w_pawn[i] = new Pawn(1);
+        whitePieces.push_back(w_pawn[i]);
     }
     for(int i = 0; i < 2; i++){
         w_bishop[i] = new Bishop(1);
+        whitePieces.push_back(w_bishop[i]);
         w_rook[i] = new Rook(1);
+        whitePieces.push_back(w_rook[i]);
         w_knight[i] = new Knight(1);
+        whitePieces.push_back(w_knight[i]);
         b_bishop[i] = new Bishop(0);
+        blackPieces.push_back(b_bishop[i]);
         b_rook[i] = new Rook(0);
+        blackPieces.push_back(b_rook[i]);
         b_knight[i] = new Knight(0);
+        blackPieces.push_back(b_knight[i]);
     }
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){
@@ -146,16 +158,15 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const{
             target.draw(newmoves[i]);
         }
     }
-    target.draw(w_king->piece);target.draw(b_king->piece);
-    target.draw(w_queen->piece);target.draw(b_queen->piece);    
-    for(int i = 0; i < 8; i++){
-        target.draw(w_pawn[i]->piece);
-        target.draw(b_pawn[i]->piece);
+    for(int i = 0; i < whitePieces.size(); i++){
+        if(whitePieces[i]->isAlive){
+            target.draw(whitePieces[i]->piece);
+        }
     }
-    for(int i = 0; i < 2; i++){
-        target.draw(w_bishop[i]->piece);target.draw(b_bishop[i]->piece);
-        target.draw(w_rook[i]->piece);target.draw(b_rook[i]->piece);
-        target.draw(w_knight[i]->piece);target.draw(b_knight[i]->piece);
+    for(int i = 0; i < blackPieces.size(); i++){
+        if(blackPieces[i]->isAlive){
+            target.draw(blackPieces[i]->piece);
+        }
     }
 }
 
@@ -213,7 +224,7 @@ bool Game::SelectPiece(Square Cells[][8], int x, int y){
                 selected_piece = w_knight[0];
             else
                 selected_piece = w_knight[1];    
-        }else if(Cells[x][y].occupied_value == -3){
+        }else if(Cells[x][y].occupied_value == -3){ 
             for(int i = 0; i < 8; i++){
                 if(w_pawn[i]->x == x && w_pawn[i]->y == y){
                     selected_piece = w_pawn[i];
@@ -254,6 +265,14 @@ bool Game::SelectPiece(Square Cells[][8], int x, int y){
     }
     DrawPossibleMoves();
     return true;
+    if(w_king->isAlive == false){
+        sleep(3);
+        exit(0);
+    }
+    if(b_king->isAlive == false){
+        sleep(3);
+        exit(0);
+    }
 }
 bool Game::getSelected(){
     return selected;
@@ -272,9 +291,31 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
     }
     if(valid){
         selected_piece->piece.setPosition(sf::Vector2f(100.f*y + 50.f, 100.f*x + 50.f));
+         int a = selected_piece->x , b = selected_piece->y;
+        if(Cells[x][y].occupied_color != 0 && Cells[x][y].occupied_color != Cells[a][b].occupied_color){
+            if(Cells[x][y].occupied_color == 1){
+                for(int i = 0; i < whitePieces.size(); i++){
+                    if(whitePieces[i]->x == x && whitePieces[i]->y == y){
+                        whitePieces[i]->isAlive = false;
+                        whitePieces[i]->x  = 100;
+                        whitePieces[i]->y =  100;
+                        whitePieces[i]->piece.setPosition(100*x,100*y);
+                    }
+                }
+            }
+            else{
+                for(int i = 0; i < blackPieces.size(); i++){
+                    if(blackPieces[i]->x == x && blackPieces[i]->y == y){
+                        blackPieces[i]->isAlive = false;
+                        blackPieces[i]->x  = 100;
+                        blackPieces[i]->y =  100;
+                        blackPieces[i]->piece.setPosition(100*x, 100*y);
+                    }
+                }
+            }
+        }
         Cells[x][y].occupied_color = (whiteTurn == 1) ? 1 : -1;
         Cells[x][y].occupied_value = selected_piece->occupied_value;
-        int a = selected_piece->x , b = selected_piece->y;
         Cells[a][b].occupied_value = 0; 
         Cells[selected_piece->x][selected_piece->y].occupied_color = 0;
         if(whiteTurn){
@@ -299,6 +340,7 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
                     if(w_pawn[i]->x == a && w_pawn[i]->y == b){
                         w_pawn[i]->x = x;
                         w_pawn[i]->y = y;
+                        break;
                     }
                 }
             }
@@ -330,7 +372,12 @@ void Game::moveSelected(Square Cells[][8], int x, int y){
         }
         whiteTurn = !whiteTurn;
     }
-    cout << w_bishop[1]->x << " " << w_bishop[1]->y << endl;
+    // for(int i = 0; i < 8; i++){
+    //     for(int j = 0; j < 8; j++){
+    //         cout << abs(Cells[i][j].occupied_value) << " ";
+    //     }
+    //     cout << endl;
+    // }
     selected_piece = NULL;
     selected = false;
 } 
