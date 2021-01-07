@@ -34,7 +34,7 @@ std::vector<Square> Knight::getMoves(Square Cells[][8], int x, int y)
         if (Cells[x + dx[i]][y + dy[i]].occupied_color == Cells[x][y].occupied_color)
             continue;
         possibleMoves.push_back(Cells[x + dx[i]][y + dy[i]]);
-        std::cout << Cells[x + dx[i]][y + dy[i]].x << std::endl;
+       // std::cout << Cells[x + dx[i]][y + dy[i]].x << std::endl;
     }
     return possibleMoves;
 }

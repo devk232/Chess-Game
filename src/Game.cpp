@@ -76,6 +76,7 @@ Game::Game(sf::Color c1, sf::Color c2)
 
 void Game::Start(sf::Color c1, sf::Color c2)
 {
+    number_of_moves = 0;
     isOver = false;
     gameStatus = true, whiteTurn = 1, selected = false;
     selected_piece = NULL;
